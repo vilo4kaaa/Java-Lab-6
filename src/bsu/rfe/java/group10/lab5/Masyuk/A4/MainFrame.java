@@ -17,6 +17,7 @@ public class MainFrame extends JFrame {
     private static final int HEIGHT = 500;
     private JMenuItem pauseMenuItem;
     private JMenuItem resumeMenuItem;
+    private JMenuItem pauseGreenItem;
     // Поле, по которому прыгают мячи
     private Field field = new Field();
     // Конструктор главного окна приложения
@@ -53,6 +54,7 @@ public class MainFrame extends JFrame {
                 field.pause();
                 pauseMenuItem.setEnabled(false);
                 resumeMenuItem.setEnabled(true);
+                pauseGreenItem.setEnabled(false);
             }
         };
         pauseMenuItem = controlMenu.add(pauseAction);
@@ -62,10 +64,25 @@ public class MainFrame extends JFrame {
                 field.resume();
                 pauseMenuItem.setEnabled(true);
                 resumeMenuItem.setEnabled(false);
+                pauseGreenItem.setEnabled(true);
             }
         };
         resumeMenuItem = controlMenu.add(resumeAction);
         resumeMenuItem.setEnabled(false);
+
+        // метод для остановки зеленых
+        Action pauseGreen = new AbstractAction("Приостановить зеленые") {
+            public void actionPerformed(ActionEvent event) {
+                field.pauseGreen();
+                pauseMenuItem.setEnabled(true);
+                resumeMenuItem.setEnabled(true);
+                pauseGreenItem.setEnabled(false);
+            }
+        };
+        pauseGreenItem = controlMenu.add(pauseGreen);
+        pauseGreenItem.setEnabled(true);
+
+
 // Добавить в центр граничной компоновки поле Field
         getContentPane().add(field, BorderLayout.CENTER);
     }
