@@ -1,4 +1,4 @@
-package bsu.rfe.java.group10.lab5.Masyuk.A4;
+package bsu.rfe.java.group10.lab6.Masyuk.A4;
 
 import java.awt.Color;
 import java.awt.Graphics;
